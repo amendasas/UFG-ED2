@@ -1,1 +1,1 @@
-# UFG-ED2
+# Estrutura de dados II - UFG
