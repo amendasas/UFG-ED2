@@ -10,8 +10,8 @@ Este repositório está organizado em várias pastas, cada uma dedicada a um con
 
 Esta pasta contém exemplos de código e exercícios de revisão sobre as estruturas de dados base, fundamentais para o entendimento dos tópicos avançados que serão abordados em Estrutura de Dados 2. Os conteúdos cobertos incluem:
 
-- **Vetores:** 
-- **Matrizes:** 
-- **Listas:** 
-- **Pilhas:** 
-- **Filas:** 
+- **Vetores** 
+- **Matrizes** 
+- **Listas** 
+- **Pilhas** 
+- **Filas** 
