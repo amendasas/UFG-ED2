@@ -1,6 +1,6 @@
 # Estrutura de Dados 2 - Repositório de Aulas
 
-Bem-vindo ao repositório de código da disciplina de Estrutura de Dados 2! Este repositório é uma ferramenta de apoio para a disciplina, contendo exemplos de código, exercícios e recursos que serão utilizados ao longo do curso.
+Bem-vindo ao repositório de código da disciplina de Estrutura de Dados 2! Este repositório serve para registrar todo o trabalho realizado durante a disciplina. Ele contém a implementação de diferentes estruturas de dados e algoritmos desenvolvidos ao longo do curso, incluindo exemplos de código e exercícios.
 
 ## Conteúdos do Repositório
 
