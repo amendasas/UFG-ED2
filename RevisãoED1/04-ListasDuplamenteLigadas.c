@@ -3,50 +3,50 @@
 
 // Estrutura de um nó para a lista duplamente ligada
 typedef struct Node {
-    int data;             // Dados armazenados no nó
-    struct Node* next;    // Ponteiro para o próximo nó
-    struct Node* prev;    // Ponteiro para o nó anterior
+    int data;         
+    struct Node* next;  
+    struct Node* prev;    
 } Node;
 
-Node* head = NULL; // Ponteiro para o início da lista
+Node* head = NULL; 
 
 // Função para inserir um valor no início da lista
 void insertFront(int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node)); // Aloca memória para o novo nó
-    newNode->data = value;                       // Atribui o valor ao nó
-    newNode->next = head;                        // O próximo nó do novo nó é o antigo início da lista
-    newNode->prev = NULL;                        // O novo nó não tem nó anterior
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;         
+    newNode->next = head;            
+    newNode->prev = NULL;
     if (head != NULL)
-        head->prev = newNode;                     // Atualiza o ponteiro do antigo início para o novo nó
-    head = newNode;                              // Atualiza o início da lista para o novo nó
+        head->prev = newNode;
+    head = newNode;
 }
 
 // Função para deletar um nó específico da lista
 void deleteNode(Node* node) {
-    if (node == head)                           // Se o nó a ser removido é o início
-        head = node->next;                     // Atualiza o início da lista
+    if (node == head)                          
+        head = node->next;                     
     if (node->next != NULL)
-        node->next->prev = node->prev;         // Atualiza o ponteiro do próximo nó para o nó anterior
+        node->next->prev = node->prev;         
     if (node->prev != NULL)
-        node->prev->next = node->next;         // Atualiza o ponteiro do nó anterior para o próximo nó
-    free(node);                                // Libera a memória do nó
+        node->prev->next = node->next;         
+    free(node);                                
 }
 
 // Função para imprimir todos os elementos da lista
 void printList() {
-    Node* temp = head; // Inicia no início da lista
-    while (temp != NULL) {  // Percorre a lista até o fim
-        printf("%d ", temp->data);  // Imprime o dado do nó
-        temp = temp->next;         // Move para o próximo nó
+    Node* temp = head; 
+    while (temp != NULL) {  
+        printf("%d ", temp->data); 
+        temp = temp->next;
     }
-    printf("\n"); // Quebra de linha após a impressão da lista
+    printf("\n");
 }
 
 // Função para buscar um valor na lista e exibir detalhes dos vizinhos
 void searchValue(int value) {
-    Node* temp = head; // Inicia no início da lista
-    while (temp != NULL) {  // Percorre a lista até o fim
-        if (temp->data == value) {  // Verifica se o valor do nó é igual ao valor procurado
+    Node* temp = head; 
+    while (temp != NULL) {  
+        if (temp->data == value) { 
             printf("Valor %d encontrado!\n", value);
             printf("Detalhes do nó:\n");
             printf("Valor: %d\n", temp->data);
@@ -58,12 +58,14 @@ void searchValue(int value) {
                 printf("Vizinho próximo: %d\n", temp->next->data);  // Exibe o valor do próximo nó, se existir
             else
                 printf("Nenhum vizinho próximo.\n");
-            return;  // Sai da função após encontrar o valor
+            return;
         }
-        temp = temp->next; // Move para o próximo nó
+        temp = temp->next; 
     }
-    printf("Valor %d não encontrado.\n", value); // Mensagem se o valor não for encontrado
+    printf("Valor %d não encontrado.\n", value);
 }
+
+
 
 int main() {
     int choice, value;
