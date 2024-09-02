@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INITIAL_SIZE 3 // Tamanho inicial da pilha
+#define INITIAL_SIZE 3
 
-int* pilha;          // Ponteiro para a pilha
-int tamanho = INITIAL_SIZE; // Tamanho atual da pilha
-int topo = -1;      // Índice do topo da pilha
+int* pilha;          
+int tamanho = INITIAL_SIZE;
+int topo = -1; 
 
 // Função para verificar se a pilha está vazia
 int esta_vazia() {
@@ -14,7 +14,7 @@ int esta_vazia() {
 
 // Função para expandir dinamicamente a pilha quando a capacidade máxima é atingida
 void expandir_pilha() {
-    tamanho *= 2;  // Dobra o tamanho da pilha
+    tamanho *= 2;  
     pilha = realloc(pilha, tamanho * sizeof(int));  // Realoca a memória
     if (pilha == NULL) {
         printf("Falha ao realocar memória!\n");
@@ -35,9 +35,9 @@ void push(int elemento) {
 int pop() {
     if (esta_vazia()) {
         printf("Pilha vazia!\n");
-        return -1; // Retorna um valor indicador de erro
+        return -1;
     } else {
-        return pilha[topo--]; // Retorna o elemento do topo e decrementa o topo
+        return pilha[topo--]; 
     }
 }
 
@@ -45,9 +45,9 @@ int pop() {
 int top() {
     if (esta_vazia()) {
         printf("Pilha vazia!\n");
-        return -1; // Retorna um valor indicador de erro
+        return -1; 
     } else {
-        return pilha[topo]; // Retorna o elemento do topo
+        return pilha[topo];
     }
 }
 
@@ -55,28 +55,34 @@ int top() {
 void imprimir() {
     printf("\nConteúdo da pilha: ");
     for (int i = topo; i >= 0; i--) {
-        printf("%d ", pilha[i]); // Imprime cada elemento do topo para a base
+        printf("%d ", pilha[i]); 
     }
     printf("\n");
 }
 
 int main() {
-    pilha = malloc(INITIAL_SIZE * sizeof(int)); // Aloca memória inicial para a pilha
+    pilha = malloc(INITIAL_SIZE * sizeof(int)); 
     if (pilha == NULL) {
         printf("Falha ao alocar memória!\n");
         return 1;
     }
 
-    push(10); // Adiciona elementos à pilha
+    // Adiciona elementos à pilha
+    push(10);
     push(20);
     push(30);
-    imprimir(); // Imprime o conteúdo da pilha
+    // Imprime o conteúdo da pilha
+    imprimir();
 
-    printf("\nElemento no topo: %d\n", top()); // Mostra o elemento do topo
+    // Mostra o elemento do topo
+    printf("\nElemento no topo: %d\n", top());
 
-    printf("\nElemento removido: %d\n", pop()); // Remove e mostra o elemento do topo
-    imprimir(); // Imprime o conteúdo da pilha após remoção
+    // Remove e mostra o elemento do topo
+    printf("\nElemento removido: %d\n", pop());
+    // Imprime o conteúdo da pilha após remoção
+    imprimir();
 
-    free(pilha); // Libera a memória alocada para a pilha
+    // Libera a memória alocada para a pilha
+    free(pilha);
     return 0;
 }
