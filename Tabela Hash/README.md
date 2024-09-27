@@ -19,20 +19,4 @@ O objetivo deste projeto é desenvolver um sistema que utilize uma tabela hash p
 - **Exibição de Produtos Esgotados**: Exibe uma lista de produtos que estão esgotados, ajudando na gestão do estoque e na comunicação com os clientes.
 - **Remoção de Produtos**: Permite a exclusão de produtos da tabela hash, atualizando o sistema em tempo real.
 
-### Estrutura do Código
-
-O código é composto pelas seguintes partes:
-
-- **Definição das Estruturas**: Estruturas `Produto` e `TabelaHash` para representar produtos e a tabela hash, respectivamente.
-- **Funções de Manipulação**: Funções para inserir, buscar, exibir e deletar produtos na tabela hash.
-- **Função Principal**: Demonstração do uso das funcionalidades, incluindo a criação de produtos e operações na tabela hash.
-
-### Como Usar
-
-1. **Compilar o Código**: Use um compilador C (como `gcc`) para compilar o código.
-2. **Executar o Programa**: Após a compilação, execute o programa para ver as funcionalidades em ação.
-3. **Adicionar/Remover Produtos**: Você pode modificar o código para adicionar ou remover produtos conforme necessário.
-
-### Conclusão
-
 Este código serve como uma base para um sistema mais complexo que pode ser expandido para atender a requisitos adicionais, como a ordenação dos produtos por diferentes critérios (preço, popularidade, etc.) e a gestão de acessos simultâneos durante eventos de alta demanda como a Black Friday.
