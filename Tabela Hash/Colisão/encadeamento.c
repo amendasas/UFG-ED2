@@ -59,8 +59,8 @@ Produto *buscar(TabelaHash *tabela, int id) {
     return NULL;  // Retorna NULL se não for encontrado
 }
 
-// Função para exibir todos os produtos esgotados
-void exibir_esgotados(TabelaHash *tabela) {
+// Função para exibir todos os produtos
+void exibir_todos(TabelaHash *tabela) {
     for (int i = 0; i < TAMANHO_HASH; i++) {
         Produto *atual = tabela->tabela[i];
         while (atual != NULL) {
@@ -73,7 +73,7 @@ void exibir_esgotados(TabelaHash *tabela) {
     }
 }
 
-// Função para deletar um produto da tabela hash
+// Função para deletar um produto da tabela hash pelo ID
 void deletar(TabelaHash *tabela, int id) {
     int indice = funcao_hash(id);  // Calcula o índice do produto a ser deletado
     Produto *atual = tabela->tabela[indice];
@@ -94,23 +94,57 @@ void deletar(TabelaHash *tabela, int id) {
         anterior = atual;
         atual = atual->proximo;
     }
-    printf("Produto com ID %d não encontrado.\n", id);
+    printf("Produto com ID %d não encontrado para exclusão.\n", id);
 }
+
+// Função para contar o número total de elementos (produtos) na tabela hash
+int contar_elementos(TabelaHash *tabela) {
+    int total = 0;
+
+    // Percorre todas as posições da tabela hash
+    for (int i = 0; i < TAMANHO_HASH; i++) {
+        Transacao *atual = tabela->tabela[i];
+
+        // Percorre a lista ligada em cada posição
+        while (atual != NULL) {
+            total++;  // Incrementa o contador para cada transação encontrada
+            atual = atual->proximo;  // Vai para o próximo elemento na lista
+        }
+    }
+
+    return total;
+}
+
+// Função para inserir 20 transações predefinidas na tabela hash
+void inserir_dados_predefinidos(TabelaHash *tabela) {
+    // Inserindo transações diretamente
+    inserir(tabela, criar_transacao(101, 1000.50, "Smartphone", "disponível"));
+    inserir(tabela, criar_transacao(102, 250.75, "Fone de Ouvido", "esgotado"));
+    inserir(tabela, criar_transacao(103, 50000.00, "PlayStation", "disponível"));
+    inserir(tabela, criar_transacao(104, 1500.00, "Caixa de Som", "disponível"));
+    inserir(tabela, criar_transacao(105, 2000.25, "Impressora", "esgotado"));
+    inserir(tabela, criar_transacao(106, 750.00, "Projetor", "disponível"));
+    inserir(tabela, criar_transacao(107, 3000.50, "SmartWatch", "esgotado"));
+    inserir(tabela, criar_transacao(108, 850.00, "Televisão", "disponível"));
+    inserir(tabela, criar_transacao(109, 990.75, "Monitor", "esgotado"));
+
+
+    printf("Os produtos foram inseridos com sucesso.\n");
+}
+
+
 
 // Função principal para demonstrar o uso da tabela hash com produtos de um e-commerce
 int main() {
     // Inicializa a tabela hash
     TabelaHash tabela = {NULL};
 
-    // Criação de alguns produtos
-    Produto *produto1 = criar_produto(101, 1000.50, "Smartphone", "disponível");
-    Produto *produto2 = criar_produto(102, 250.75, "Fone de Ouvido", "esgotado");
-    Produto *produto3 = criar_produto(103, 500.00, "Smartwatch", "disponível");
+    // Inserir os dados predefinidos na tabela hash
+    inserir_dados_predefinidos(&tabela);
 
-    // Insere os produtos na tabela hash
-    inserir(&tabela, produto1);
-    inserir(&tabela, produto2);
-    inserir(&tabela, produto3);
+    // Exibir todos os produtos inseridos
+    printf("\nTodas as transações inseridas: %d\n", contar_elementos(&tabela));
+    exibir_todas(&tabela);
 
     // Busca por um produto específico
     Produto *p = buscar(&tabela, 102);
@@ -121,9 +155,9 @@ int main() {
         printf("Produto não encontrado.\n");
     }
 
-    // Exibir todos os produtos esgotados
-    printf("\nProdutos esgotados:\n");
-    exibir_esgotados(&tabela);
+    // Exibir todos os produtos
+    printf("\nProdutos:\n");
+    exibir_todos(&tabela);
 
     // Deletar um produto da tabela hash
     deletar(&tabela, 102);
