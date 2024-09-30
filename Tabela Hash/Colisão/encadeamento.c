@@ -59,15 +59,13 @@ Produto *buscar(TabelaHash *tabela, int id) {
     return NULL;  // Retorna NULL se não for encontrado
 }
 
-// Função para exibir todos os produtos
+// Função para exibir todos os produtos disponíveis
 void exibir_todos(TabelaHash *tabela) {
     for (int i = 0; i < TAMANHO_HASH; i++) {
         Produto *atual = tabela->tabela[i];
         while (atual != NULL) {
-            if (strcmp(atual->disponibilidade, "esgotado") == 0) {
-                printf("Produto ID: %d, Preço: %.2f, Nome: %s, Disponibilidade: %s\n",
-                       atual->id, atual->preco, atual->nome, atual->disponibilidade);
-            }
+            printf("Produto ID: %d, Preço: %.2f, Nome: %s, Disponibilidade: %s\n",
+                   atual->id, atual->preco, atual->nome, atual->disponibilidade);
             atual = atual->proximo;  // Vai para o próximo produto
         }
     }
@@ -97,42 +95,39 @@ void deletar(TabelaHash *tabela, int id) {
     printf("Produto com ID %d não encontrado para exclusão.\n", id);
 }
 
-// Função para contar o número total de elementos (produtos) na tabela hash
+// Função para contar o número total de produtos na tabela hash
 int contar_elementos(TabelaHash *tabela) {
     int total = 0;
 
     // Percorre todas as posições da tabela hash
     for (int i = 0; i < TAMANHO_HASH; i++) {
-        Transacao *atual = tabela->tabela[i];
+        Produto *atual = tabela->tabela[i]; // Corrigido para Produto
 
         // Percorre a lista ligada em cada posição
         while (atual != NULL) {
-            total++;  // Incrementa o contador para cada transação encontrada
-            atual = atual->proximo;  // Vai para o próximo elemento na lista
+            total++;  // Incrementa o contador para cada produto encontrado
+            atual = atual->proximo;  // Vai para o próximo produto na lista
         }
     }
 
     return total;
 }
 
-// Função para inserir 20 transações predefinidas na tabela hash
+// Função para inserir 10 produtos predefinidos na tabela hash
 void inserir_dados_predefinidos(TabelaHash *tabela) {
-    // Inserindo transações diretamente
-    inserir(tabela, criar_transacao(101, 1000.50, "Smartphone", "disponível"));
-    inserir(tabela, criar_transacao(102, 250.75, "Fone de Ouvido", "esgotado"));
-    inserir(tabela, criar_transacao(103, 50000.00, "PlayStation", "disponível"));
-    inserir(tabela, criar_transacao(104, 1500.00, "Caixa de Som", "disponível"));
-    inserir(tabela, criar_transacao(105, 2000.25, "Impressora", "esgotado"));
-    inserir(tabela, criar_transacao(106, 750.00, "Projetor", "disponível"));
-    inserir(tabela, criar_transacao(107, 3000.50, "SmartWatch", "esgotado"));
-    inserir(tabela, criar_transacao(108, 850.00, "Televisão", "disponível"));
-    inserir(tabela, criar_transacao(109, 990.75, "Monitor", "esgotado"));
-
+    // Inserindo produtos diretamente
+    inserir(tabela, criar_produto(101, 1000.50, "Smartphone", "disponível"));
+    inserir(tabela, criar_produto(102, 250.75, "Fone de Ouvido", "esgotado"));
+    inserir(tabela, criar_produto(103, 50000.00, "PlayStation", "disponível"));
+    inserir(tabela, criar_produto(104, 1500.00, "Caixa de Som", "disponível"));
+    inserir(tabela, criar_produto(105, 2000.25, "Impressora", "esgotado"));
+    inserir(tabela, criar_produto(106, 750.00, "Projetor", "disponível"));
+    inserir(tabela, criar_produto(107, 3000.50, "SmartWatch", "esgotado"));
+    inserir(tabela, criar_produto(108, 850.00, "Televisão", "disponível"));
+    inserir(tabela, criar_produto(109, 990.75, "Monitor", "esgotado"));
 
     printf("Os produtos foram inseridos com sucesso.\n");
 }
-
-
 
 // Função principal para demonstrar o uso da tabela hash com produtos de um e-commerce
 int main() {
@@ -143,8 +138,8 @@ int main() {
     inserir_dados_predefinidos(&tabela);
 
     // Exibir todos os produtos inseridos
-    printf("\nTodas as transações inseridas: %d\n", contar_elementos(&tabela));
-    exibir_todas(&tabela);
+    printf("\nTotal de produtos inseridos: %d\n", contar_elementos(&tabela));
+    exibir_todos(&tabela);
 
     // Busca por um produto específico
     Produto *p = buscar(&tabela, 102);
@@ -154,10 +149,6 @@ int main() {
     } else {
         printf("Produto não encontrado.\n");
     }
-
-    // Exibir todos os produtos
-    printf("\nProdutos:\n");
-    exibir_todos(&tabela);
 
     // Deletar um produto da tabela hash
     deletar(&tabela, 102);
