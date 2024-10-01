@@ -172,7 +172,7 @@ void deletar(TabelaHash *tabela, int id) {
     while (tabela->tabela[indice].ocupada && tentativas < TAMANHO_HASH) {
         if (tabela->tabela[indice].id == id) {
             tabela->tabela[indice].ocupada = 0;  // Marca o slot como desocupado
-            printf("Produto com ID %d removido.\n", id);
+            printf("\nProduto com ID %d removido.\n\n", id);
             return;
         }
         indice = (indice + 1) % TAMANHO_HASH;  // Avança para o próximo índice (sondagem linear)
@@ -196,13 +196,27 @@ int main() {
 
     exibir_todos(&tabela_linear);
 
+    // Buscar um produto
+    int id_busca = 102;
+    Produto *resultado_busca = buscar(&tabela_linear, id_busca);
+    if (resultado_busca) {
+        printf("\nProduto encontrado: ID: %d, Nome: %s, Preço: %.2f, Disponibilidade: %s\n", 
+               resultado_busca->id, resultado_busca->nome, resultado_busca->preco, resultado_busca->disponibilidade);
+    } else {
+        printf("\nProduto com ID %d não encontrado.\n", id_busca);
+    }
+
+    // Deletar um produto
+    int id_deletar = 103;
+    deletar(&tabela_linear, id_deletar);
+    exibir_todos(&tabela_linear);  // Exibir produtos restantes após a exclusão
+
     // Inserir produtos na tabela hash usando sondagem quadrática
     printf("\nInserção com Sondagem Quadrática:\n");
     TabelaHash tabela_quadratica = {0};
     inserir_quadratica(&tabela_quadratica, criar_produto(104, 1999.99, "Teclado Mecânico Corsair K95", "disponível"));
     inserir_quadratica(&tabela_quadratica, criar_produto(105, 999.99, "Headset HyperX Cloud Alpha", "esgotado"));
     inserir_quadratica(&tabela_quadratica, criar_produto(106, 7999.99, "Monitor 4K ASUS ROG Swift", "disponível"));
-
 
     exibir_todos(&tabela_quadratica);
 
@@ -212,7 +226,6 @@ int main() {
     inserir_duplo_hashing(&tabela_duplo, criar_produto(107, 599.99, "SSD NVMe 1TB Samsung 980 Pro", "disponível"));
     inserir_duplo_hashing(&tabela_duplo, criar_produto(108, 3499.99, "Gabinete NZXT H510 Elite", "esgotado"));
     inserir_duplo_hashing(&tabela_duplo, criar_produto(109, 1999.99, "Fonte Corsair RM850x 850W", "disponível"));
-
 
     exibir_todos(&tabela_duplo);
 
