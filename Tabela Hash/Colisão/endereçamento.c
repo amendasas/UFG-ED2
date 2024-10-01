@@ -34,11 +34,11 @@ int sondagem_linear(TabelaHash *tabela, int id) {
     int tentativas = 0;
 
     while (tabela->tabela[indice].ocupada && tentativas < TAMANHO_HASH) {
-        indice = (indice + 1) % TAMANHO_HASH;  // Avança linearmente
+        indice = (indice + 1) % TAMANHO_HASH;
         tentativas++;
     }
 
-    return (tentativas < TAMANHO_HASH) ? indice : -1;  // Retorna o índice ou -1 se a tabela estiver cheia
+    return (tentativas < TAMANHO_HASH) ? indice : -1; 
 }
 
 // Sondagem quadrática
@@ -145,6 +145,44 @@ void exibir_todos(TabelaHash *tabela) {
     }
 }
 
+
+// Função para buscar um produto na tabela hash
+Produto *buscar(TabelaHash *tabela, int id) {
+    int indice = funcao_hash(id);  // Calcula o índice inicial baseado na função hash
+    int tentativas = 0;
+
+    // Continua procurando até encontrar o produto ou até esgotar as tentativas
+    while (tabela->tabela[indice].ocupada && tentativas < TAMANHO_HASH) {
+        if (tabela->tabela[indice].id == id) {
+            return &tabela->tabela[indice];  // Produto encontrado
+        }
+        indice = (indice + 1) % TAMANHO_HASH;  // Avança para o próximo índice (sondagem linear)
+        tentativas++;
+    }
+
+    return NULL;  // Produto não encontrado
+}
+
+// Função para deletar um produto da tabela hash
+void deletar(TabelaHash *tabela, int id) {
+    int indice = funcao_hash(id);  // Calcula o índice inicial baseado na função hash
+    int tentativas = 0;
+
+    // Continua procurando o produto até esgotar as tentativas
+    while (tabela->tabela[indice].ocupada && tentativas < TAMANHO_HASH) {
+        if (tabela->tabela[indice].id == id) {
+            tabela->tabela[indice].ocupada = 0;  // Marca o slot como desocupado
+            printf("Produto com ID %d removido.\n", id);
+            return;
+        }
+        indice = (indice + 1) % TAMANHO_HASH;  // Avança para o próximo índice (sondagem linear)
+        tentativas++;
+    }
+
+    printf("Erro: Produto com ID %d não encontrado.\n", id);  // Produto não encontrado para exclusão
+}
+
+
 // Função principal para demonstrar o uso da tabela hash com sondagem
 int main() {
     // Inicializa a tabela hash
@@ -152,25 +190,29 @@ int main() {
 
     // Inserir produtos na tabela hash usando sondagem linear
     printf("\nInserção com Sondagem Linear:\n");
-    inserir_linear(&tabela_linear, criar_produto(101, 1000.50, "Smartphone", "disponível"));
-    inserir_linear(&tabela_linear, criar_produto(102, 250.75, "Fone de Ouvido", "esgotado"));
-    inserir_linear(&tabela_linear, criar_produto(103, 50000.00, "Smartwatch", "disponível"));
+    inserir_linear(&tabela_linear, criar_produto(101, 9999.99, "Placa de Vídeo NVIDIA RTX 4090", "disponível"));
+    inserir_linear(&tabela_linear, criar_produto(102, 4999.99, "Processador Intel Core i9 13900K", "esgotado"));
+    inserir_linear(&tabela_linear, criar_produto(103, 1499.99, "Mouse Gamer Logitech G Pro X", "disponível"));
 
     exibir_todos(&tabela_linear);
 
     // Inserir produtos na tabela hash usando sondagem quadrática
     printf("\nInserção com Sondagem Quadrática:\n");
     TabelaHash tabela_quadratica = {0};
-    inserir_quadratica(&tabela_quadratica, criar_produto(104, 1500.00, "Tablet", "disponível"));
-    inserir_quadratica(&tabela_quadratica, criar_produto(105, 2000.25, "Notebook", "esgotado"));
+    inserir_quadratica(&tabela_quadratica, criar_produto(104, 1999.99, "Teclado Mecânico Corsair K95", "disponível"));
+    inserir_quadratica(&tabela_quadratica, criar_produto(105, 999.99, "Headset HyperX Cloud Alpha", "esgotado"));
+    inserir_quadratica(&tabela_quadratica, criar_produto(106, 7999.99, "Monitor 4K ASUS ROG Swift", "disponível"));
+
 
     exibir_todos(&tabela_quadratica);
 
     // Inserir produtos na tabela hash usando duplo hashing
     printf("\nInserção com Duplo Hashing:\n");
     TabelaHash tabela_duplo = {0};
-    inserir_duplo_hashing(&tabela_duplo, criar_produto(106, 4500.25, "Câmera", "disponível"));
-    inserir_duplo_hashing(&tabela_duplo, criar_produto(107, 750.00, "Teclado", "esgotado"));
+    inserir_duplo_hashing(&tabela_duplo, criar_produto(107, 599.99, "SSD NVMe 1TB Samsung 980 Pro", "disponível"));
+    inserir_duplo_hashing(&tabela_duplo, criar_produto(108, 3499.99, "Gabinete NZXT H510 Elite", "esgotado"));
+    inserir_duplo_hashing(&tabela_duplo, criar_produto(109, 1999.99, "Fonte Corsair RM850x 850W", "disponível"));
+
 
     exibir_todos(&tabela_duplo);
 
