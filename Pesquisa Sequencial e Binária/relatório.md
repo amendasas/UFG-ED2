@@ -16,5 +16,7 @@ Após a implementação e análise dos tempos de execução das buscas sequencia
 ### **Recomendação Final**  
 Com base na comparação entre as duas abordagens, **a busca binária é a melhor escolha para um e-commerce com um catálogo grande**, pois oferece **desempenho superior para buscas frequentes**. Se a lista de produtos for **relativamente estática ou com poucas atualizações**, a busca binária será altamente eficiente. 
 
+Caso o catálogo seja **atualizado frequentemente** com adições e remoções, é recomendável utilizar **estruturas de dados como **tabelas hash**. Essa estrutura mantêm a eficiência tanto nas buscas quanto nas operações de inserção e remoção.
+
 Portanto, a recomendação é **adotar a busca binária como solução principal** sempre que possível, garantindo um sistema de busca eficiente e preparado para lidar com o crescimento do catálogo de produtos.
 
