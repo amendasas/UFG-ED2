@@ -1,8 +1,7 @@
-
-### **Gráfico comparativo entre busca sequencial e binária:**
-https://docs.google.com/spreadsheets/d/1SsEHJxuK_V1jwuNhkCQy5qgoaGZ__XqI1GjUoY17rqA/edit?usp=sharing
-
 ### **Justificativa da Abordagem Recomendada**  
+
+Gráfico comparativo entre busca sequencial e binária:
+https://docs.google.com/spreadsheets/d/1SsEHJxuK_V1jwuNhkCQy5qgoaGZ__XqI1GjUoY17rqA/edit?usp=sharing
 
 Após a implementação e análise dos tempos de execução das buscas sequencial e binária, foi possível observar que cada abordagem possui vantagens e desvantagens dependendo do tamanho do catálogo e da dinâmica de atualizações.
 
