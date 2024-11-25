@@ -45,7 +45,7 @@ Este projeto implementa um corretor ortográfico básico utilizando **Árvores P
 
 ---
 
-##Uso do Programa##
+##Uso do Programa
 
 Ao executar o programa, você verá o seguinte menu:
 
