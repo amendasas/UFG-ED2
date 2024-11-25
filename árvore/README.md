@@ -11,3 +11,17 @@ Este projeto implementa um corretor ortográfico básico utilizando **Árvores P
 - **Eficiência:** Utiliza a estrutura Patricia para armazenamento otimizado e busca eficiente.
 - **Interatividade:** Oferece um menu interativo para facilitar a interação do usuário.
 - **Customizável:** Permite carregar palavras a partir de um arquivo de texto (`dicionario.txt`).
+
+---
+
+## **Como Rodar o Projeto**
+
+### **Pré-requisitos**
+- Sistema com suporte ao compilador **GCC**.
+- Arquivo `dicionario.txt` no mesmo diretório do código.
+
+### **Passos**
+1. **Clone o repositório**:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd <PASTA_DO_REPOSITORIO>
