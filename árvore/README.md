@@ -25,3 +25,28 @@ Este projeto implementa um corretor ortográfico básico utilizando **Árvores P
    ```bash
    git clone <URL_DO_REPOSITORIO>
    cd <PASTA_DO_REPOSITORIO>
+
+2. **Compile o programa**:
+   ```bash
+   gcc corretor.c -o corretor
+   
+2. **Execute o programa**:
+   ```bash
+   ./corretor
+
+## **Uso**
+Ao executar o programa, você verá o seguinte menu:
+   Copiar código
+   Escolha uma opção:
+   1. Inserir palavra
+   2. Buscar palavra
+   3. Autocompletar palavras
+   4. Exibir todas as palavras
+   0. Sair
+
+Funcionalidades
+**Opção 1**: Inserir uma palavra no dicionário.
+**Opção 2**: Buscar uma palavra no dicionário.
+**Opção 3**: Digitar um prefixo para obter sugestões de palavras.
+**Opção 4**: Exibir todas as palavras atualmente armazenadas na Árvore Patricia.
+**Opção 0**: Encerrar o programa.
