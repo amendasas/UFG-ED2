@@ -34,15 +34,20 @@ Este projeto implementa um corretor ortográfico básico utilizando **Árvores P
    ```bash
    ./corretor
 
-## **Uso**
-Ao executar o programa, você verá o seguinte menu:
-   Copiar código
+   
+---
+
+
+## **Uso**:
+   Ao executar o programa, você verá o seguinte menu:
+   ```bash
    Escolha uma opção:
    1. Inserir palavra
    2. Buscar palavra
    3. Autocompletar palavras
    4. Exibir todas as palavras
    0. Sair
+   
 
 Funcionalidades
 **Opção 1**: Inserir uma palavra no dicionário.
