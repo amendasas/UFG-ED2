@@ -58,8 +58,8 @@ Escolha uma opção:
 0. Sair
    
 Detalhes das Funcionalidades
-Opção 1 - Inserir Palavra: Adicione manualmente uma palavra ao dicionário.
-Opção 2 - Buscar Palavra: Verifique se uma palavra está presente no dicionário. Retorna "Encontrada" ou "Não encontrada".
-Opção 3 - Autocompletar Palavras: Insira um prefixo e obtenha uma lista de palavras que começam com ele.
-Opção 4 - Exibir Todas as Palavras: Liste todas as palavras atualmente armazenadas na Árvore Patricia.
-Opção 0 - Sair: Encerre o programa.
+- Opção 1 - Inserir Palavra: Adicione manualmente uma palavra ao dicionário.
+- Opção 2 - Buscar Palavra: Verifique se uma palavra está presente no dicionário. Retorna "Encontrada" ou "Não encontrada".
+- Opção 3 - Autocompletar Palavras: Insira um prefixo e obtenha uma lista de palavras que começam com ele.
+- Opção 4 - Exibir Todas as Palavras: Liste todas as palavras atualmente armazenadas na Árvore Patricia.
+- Opção 0 - Sair: Encerre o programa.
